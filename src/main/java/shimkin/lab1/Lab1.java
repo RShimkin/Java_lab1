@@ -12,6 +12,6 @@ package shimkin.lab1;
 public class Lab1 {
 
     public static void main(String[] args) {
-        
+        Container cont = new Container(5);
     }
 }

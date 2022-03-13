@@ -4,12 +4,23 @@
  */
 package shimkin.lab1;
 
-import java.lang.reflect.Array;
-
 /**
  *
  * @author User
  */
-public class Container<T> {
+public class Container {
+    public int arr[];
+    int size;
+    int capacity = 16;
     
+    public Container() {
+        arr = new int[capacity];
+        size = 0;
+    }
+    
+    public Container(int newcapacity) {
+        capacity = newcapacity;
+        arr = new int[capacity];
+        size = 0;
+    }
 }

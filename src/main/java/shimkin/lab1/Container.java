@@ -11,16 +11,45 @@ package shimkin.lab1;
 public class Container {
     public int arr[];
     int size;
-    int capacity = 16;
+    int capacity;
     
     public Container() {
-        arr = new int[capacity];
-        size = 0;
+        capacity = 16;
+        Create();
     }
     
     public Container(int newcapacity) {
         capacity = newcapacity;
+        Create();
+    }
+    
+    private void Create() {
         arr = new int[capacity];
         size = 0;
+    }
+    
+    public void Resize(int newsize) {
+        int[] newarr = new int[newsize];
+        for (int i = 0; i < size; i++) {
+            newarr[i] = arr[i];
+        }
+        arr = newarr;
+        capacity = newsize;
+    }
+    
+    public void Add(int elem) {
+        if (size < capacity) {
+            arr[size++] = elem;
+        } else {
+           Resize(capacity*2);
+           arr[size++] = elem;
+        }
+    }
+    
+    public Integer Get(int pos) {
+        if (pos > 0 && pos < size) {
+            return arr[pos];
+        };
+        return null;
     }
 }

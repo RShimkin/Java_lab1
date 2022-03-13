@@ -13,5 +13,9 @@ public class Lab1 {
 
     public static void main(String[] args) {
         Container cont = new Container(5);
+        cont.Add(5);
+        cont.Add(10);
+        System.out.println(cont.Get(1));
+        System.out.println(cont.Get(10));
     }
 }

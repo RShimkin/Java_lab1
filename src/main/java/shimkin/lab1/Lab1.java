@@ -15,7 +15,14 @@ public class Lab1 {
         Container cont = new Container(5);
         cont.Add(5);
         cont.Add(10);
+        cont.Add(100);
+        cont.Add(5);
+        cont.Add(555);
+        cont.Add(5);
         System.out.println(cont.Get(1));
         System.out.println(cont.Get(10));
+        cont.Print();
+        cont.DeleteAll(5);
+        cont.Print();
     }
 }

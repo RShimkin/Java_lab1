@@ -52,4 +52,50 @@ public class Container {
         };
         return null;
     }
+    
+    public boolean Delete(int elem) {
+        int pos = -1;
+        for (int i = 0; i < size; i++) {
+            if (arr[i] == elem) {
+                pos = i;
+                break;
+            }
+        }
+        if (pos == -1) {
+            return false;
+        } 
+        for (int i = pos; i < size; i++) {
+            arr[i] = arr[i+1];
+            size--;
+        }
+        return true;
+    }
+    
+    public boolean DeleteAll(int elem) {
+        int pos = -1;
+        for (int i = 0; i < size; i++) {
+            if (arr[i] == elem) {
+                pos = i;
+                for (int k = i; k < size; k++) {
+                    arr[i] = arr[i+1];
+                }
+                size--;
+                i--;
+            }
+        }
+        return pos == -1 ? false : true;
+    }
+    
+    public String ToString(char delim) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < size; i++) {
+            sb.append(((Integer)arr[i]).toString());
+            sb.append(delim);
+        }
+        return sb.toString();
+    }
+    
+    public void Print() {
+        System.out.println(ToString(' '));
+    }
 }

@@ -46,6 +46,28 @@ public class Container {
         }
     }
     
+    public void Add(int[] ar) {
+        int len = ar.length;
+        while (size + len > capacity) {
+            Resize(capacity*2);
+        }
+        for (int i = 0; i < ar.length; i++) {
+            arr[size+i] = ar[i];
+        }
+        size += ar.length;
+    }
+    
+    public void Insert(int pos, int elem) {
+        if (size >= capacity) {
+            Resize(capacity*2);
+        }
+        for (int i = size; i > pos; i--) {
+            arr[i] = arr[i-1];
+        }
+        arr[pos] = elem;
+        size++;
+    }
+    
     public Integer Get(int pos) {
         if (pos > 0 && pos < size) {
             return arr[pos];
@@ -73,14 +95,15 @@ public class Container {
     
     public boolean DeleteAll(int elem) {
         int pos = -1;
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < size;) {
             if (arr[i] == elem) {
                 pos = i;
-                for (int k = i; k < size; k++) {
-                    arr[i] = arr[i+1];
+                for (int k = i; k < size - 1; k++) {
+                    arr[k] = arr[k+1];
                 }
                 size--;
-                i--;
+            } else {
+                i++;
             }
         }
         return pos == -1 ? false : true;
